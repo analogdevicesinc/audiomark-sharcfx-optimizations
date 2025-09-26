@@ -1,0 +1,66 @@
+layer:
+  # name: speex
+  description: Lib speex
+
+
+  groups:
+    - group: Libspeex
+      add-path:
+        - ../../lib/speexdsp/include
+        - ../../lib/speexdsp/
+        - ../../lib/speexdsp/include/speex/
+        - ../../lib/speexdsp/libspeexdsp
+
+      files:
+        - file: ../../lib/speexdsp/libspeexdsp/buffer.c
+        - file: ../../lib/speexdsp/libspeexdsp/fftwrap.c
+        - file: ../../lib/speexdsp/libspeexdsp/filterbank.c
+        - file: ../../lib/speexdsp/libspeexdsp/jitter.c
+        - file: ../../lib/speexdsp/libspeexdsp/mdf.c
+        - file: ../../lib/speexdsp/libspeexdsp/preprocess.c
+        - file: ../../lib/speexdsp/libspeexdsp/resample.c
+        - file: ../../lib/speexdsp/libspeexdsp/scal.c
+        - file: ../../lib/speexdsp/libspeexdsp/smallft.c
+
+      define:
+        - USE_CMSIS_DSP
+        - FLOATING_POINT
+          # speex boosted routines
+          # FilterBank
+        - OVERRIDE_FB_COMPUTE_BANK32
+        - OVERRIDE_FB_COMPUTE_PSD16
+          # ANR
+        - OVERRIDE_ANR_VEC_MUL
+        - OVERRIDE_ANR_UPDATE_NOISE_ESTIMATE
+        - OVERRIDE_ANR_APOSTERIORI_SNR
+        - OVERRIDE_ANR_POWER_SPECTRUM
+        - OVERRIDE_ANR_COMPUTE_GAIN_FLOOR
+        - OVERRIDE_ANR_UPDATE_ZETA
+        - OVERRIDE_ANR_UPDATE_GAINS_CRITICAL_BANDS
+        - OVERRIDE_ANR_UPDATE_GAINS_LINEAR
+        - OVERRIDE_ANR_APPLY_SPEC_GAIN
+        - OVERRIDE_ANR_OLA
+        - OVERRIDE_ANR_UPDATE_NOISE_PROB
+          # MDF
+        - OVERRIDE_MDF_DC_NOTCH
+        - OVERRIDE_MDF_INNER_PROD
+        - OVERRIDE_MDF_POWER_SPECTRUM
+        - OVERRIDE_MDF_POWER_SPECTRUM_ACCUM
+        - OVERRIDE_MDF_SPECTRAL_MUL_ACCUM
+        - OVERRIDE_MDF_WEIGHT_SPECT_MUL_CONJ
+        - OVERRIDE_MDF_ADJUST_PROP
+        - OVERRIDE_MDF_PREEMPH_FLT
+        - OVERRIDE_MDF_STRIDED_PREEMPH_FLT
+        - OVERRIDE_MDF_VEC_SUB
+        - OVERRIDE_MDF_VEC_SUB16
+        - OVERRIDE_MDF_VEC_ADD
+        - OVERRIDE_MDF_SMOOTHED_ADD
+        - OVERRIDE_MDF_DEEMPH
+        - OVERRIDE_MDF_SMOOTH_FE_NRG
+        - OVERRIDE_MDF_FILTERED_SPEC_AD_XCORR
+        - OVERRIDE_MDF_NORM_LEARN_RATE_CALC
+        - OVERRIDE_MDF_CONVERG_LEARN_RATE_CALC
+        - OVERRIDE_MDF_VEC_SCALE
+        #- OVERRIDE_ANR_VEC_CONV_FROM_INT16
+        - EXPORT: /**/
+
